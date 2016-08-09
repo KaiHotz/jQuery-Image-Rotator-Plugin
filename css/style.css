@@ -1,0 +1,17 @@
+body { background-color: #fff; }
+
+#photoShowSlider #photoShow { height: 400px; width: 100%; }
+
+#photoShowSlider #photoShow div { position: absolute; z-index: 0; width: 100%; height: 400px; margin: 0 auto; left: 0; right: 0; background-position: center center; background-repeat: no-repeat; background-size: contain; background-color: #fff; }
+
+#photoShowSlider #photoShow div.previous { z-index: 1; }
+
+#photoShowSlider #photoShow div.current { z-index: 2; }
+
+#photoShowSlider #photoShowButtons { overflow: hidden; }
+
+#photoShowSlider #photoShowButtons #prevbtn, #photoShowSlider #photoShowButtons #nextbtn { cursor: pointer; background-repeat: no-repeat; background-size: cover; background-position: center center; width: 80px; height: 80px; border-radius: 50%; border: 1px solid black; color: #fff; font-style: bold; font-size: 14px; }
+
+#photoShowSlider #photoShowButtons #prevbtn { float: left; }
+
+#photoShowSlider #photoShowButtons #nextbtn { float: right; }
