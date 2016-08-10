@@ -8,7 +8,7 @@ var gulp = require('gulp'),
 
 
 gulp.task('default', ()=> {
-  gulp.src('scss/style.scss')
+  gulp.src('scss/jquery_imageRotator.scss')
     .pipe(sass({
         outputStyle: 'compact',
         sourceComments: false
