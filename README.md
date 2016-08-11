@@ -1,6 +1,6 @@
 #jQuery Image Rotator Plugin
 
- jQuery Age Gate v1.0.0
+ Query Image Rotator v1.0.0
 
 Very configuralable Image Rotator plugin with preview on Next and Prev button.
 Simply set your Image folder and an Array of your images in the config options. 
@@ -8,7 +8,7 @@ Simply set your Image folder and an Array of your images in the config options.
 
 by Kai Hotz AKA [SpecialKcl](https://github.com/SpecialKcl) 
 
-## Useage
+## Useage:
 
 ```javascript
 jQuery(document).ready(function($)
