@@ -1,6 +1,4 @@
-#jQuery-Plugin-Image-Rotator
-
-# jQuery Image Rotator Plugin
+#jQuery Image Rotator Plugin
 
  jQuery Age Gate v1.0.0
 
