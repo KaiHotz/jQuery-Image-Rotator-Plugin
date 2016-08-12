@@ -34,7 +34,7 @@ Now call the Image Rotator initializer function on the desiered element and your
 jQuery(document).ready(function($)
 {
    $('#yourcontainer').ageGate({
-    	'speed'       : 500, 		//Speed of animation
+    	'speed'       : 500, 		//Speed for animation on on Image Change 
         'imageFolder': 'images', 	// Image Folder
         'images'     : ['img1.jpg','img2.jpg','img3.jpg','img4.jpg'], // Array with the names of your Images
         'prevButton' : 'Previous', 	// Prev Button Text
