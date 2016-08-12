@@ -67,7 +67,7 @@
 
             oCurPhoto.removeClass('current').addClass('previous');
 
-            oNxtPhoto.css({ opacity: 0.0 }).addClass('current').animate({ opacity: 1.0 }, 500,
+            oNxtPhoto.css({ opacity: 0.0 }).addClass('current').animate({ opacity: 1.0 }, config.speed,
                 function() {
                     oCurPhoto.removeClass('previous');
                 });
