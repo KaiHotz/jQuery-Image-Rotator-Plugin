@@ -19,7 +19,7 @@ To use Image Rotator Plugin, you’ll need to make sure both the Image Rotator P
 <link rel="stylesheet" href="css/jquery_imageRotator.css">
 
 <!--  jQuery 1.9+  -->
-<script src="jquery-1.9.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 <!-- Include js plugin -->
 <script src="js/jquery_imageRotator.js"></script>
