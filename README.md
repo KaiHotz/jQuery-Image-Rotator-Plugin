@@ -31,14 +31,38 @@ To use Image Rotator Plugin, you’ll need to make sure both the Image Rotator P
 Now call the Image Rotator initializer function on the desiered element and your Image Rotator is ready.
 
 ```javascript
-jQuery(document).ready(function($)
-{
-   $('#yourcontainer').ageGate({
-    	'speed'       : 500, 		//Speed for animation on on Image Change 
-        'imageFolder': 'images', 	// Image Folder
-        'images'     : ['img1.jpg','img2.jpg','img3.jpg','img4.jpg'], // Array with the names of your Images
-        'prevButton' : 'Previous', 	// Prev Button Text
-        'nextButton' : 'Next',		// Next Button Text
-   });
+jQuery(document).ready(function($){
+
+   $('#yourcontainer').ageGate();
+
+});
+```
+
+## Customizing
+
+### 1. Options
+
+All of the options below are available to customize Image Rotator Plugin.
+
+| Variable      | Default                                       | Type   | Description                            |
+| --------------|:---------------------------------------------:|:------:| ---------------------------------------|
+| `speed`       | 500                                           | int    | Speed for animation on on Image Change |
+| `imageFolder` | 'images'                                      | string | Image Folder         				  |
+| `images`      | ['img1.jpg','img2.jpg','img3.jpg','img4.jpg'] | Array  | Array with the names of your images 	  |
+| `prevButton`  | 'Previous'                                    | string | Prev Button Text            			  |
+| `nextButton`  | 'Next'                                        | string | Next Button Text                       |
+
+
+### 2. Defaults
+
+Image Rotator Plugin default settings
+
+```javascript
+$('#yourcontainer').ageGate({
+	'speed'       : 500,
+    'imageFolder': 'images',
+    'images'     : ['img1.jpg','img2.jpg','img3.jpg','img4.jpg'],
+    'prevButton' : 'Previous',
+    'nextButton' : 'Next',
 });
 ```
