@@ -12,7 +12,7 @@ by Kai Hotz AKA [SpecialKcl](https://github.com/SpecialKcl)
 
 ### 1. Load jQuery and include Image Rotator Plugin files
 
-To use Image Rotator Plugin, you’ll need to make sure both the Image Rotator Plugin and jQuery 1.7 or higher scripts are included.
+To use Image Rotator Plugin, you’ll need to make sure both the Image Rotator Plugin and jQuery 1.9 or higher scripts are included.
 
 ```
 <!-- Important Image Rotator Plugin stylesheet -->
