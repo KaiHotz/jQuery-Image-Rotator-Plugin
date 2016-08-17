@@ -21,8 +21,10 @@
 * });
 */
 
-(function($){
-    $.fn.imageRotator = function(settings){
+(function($)
+{
+    $.fn.imageRotator = function(settings)
+    {
 
         var that = this,
             config = {
@@ -32,11 +34,13 @@
             'prevButton' : 'Previous',
             'nextButton' : 'Next',
         };
+
         if (settings){$.extend(config, settings);}
  
         // Build the container and html structure
 
-        that.setHtml = function(){
+        that.setHtml = function()
+        {
 
             var structure   = '<div id="photoShowSlider">';
                 structure  += '<div id="photoShow"></div>';
@@ -49,7 +53,8 @@
 
         }
 
-        that.setButtonBgImage = function(nextimg, previmg){
+        that.setButtonBgImage = function(nextimg, previmg)
+        {
 
             $("#nextbtn").css('background-image', nextimg.css('background-image'));
 
@@ -57,28 +62,35 @@
 
         }
 
-        that.changeImage = function(prevOrNext) {
+        that.changeImage = function(prevOrNext) 
+        {
     
             var oCurPhoto = $('#photoShow div.current');
             var oNxtPhoto = prevOrNext ? oCurPhoto.prev() : oCurPhoto.next();
-            if (oNxtPhoto.length == 0) {
+
+            if (oNxtPhoto.length == 0) 
+            {
                 oNxtPhoto = prevOrNext ? $('#photoShow div:last') : $('#photoShow div:first');
             }
 
             oCurPhoto.removeClass('current').addClass('previous');
 
-            oNxtPhoto.css({ opacity: 0.0 }).addClass('current').animate({ opacity: 1.0 }, config.speed,
-                function() {
-                    oCurPhoto.removeClass('previous');
-                });
+            oNxtPhoto.css({ opacity: 0.0 }).addClass('current').animate({ opacity: 1.0 }, config.speed,function() 
+            {
+                oCurPhoto.removeClass('previous');
+            });
 
             var nextimg = $('#photoShow div.current').next();
-            if(nextimg.length == 0){
+
+            if(nextimg.length == 0)
+            {
                 nextimg = $('#photoShow div:first');
             }
 
             var previmg = $('#photoShow div.current').prev();
-            if(previmg.length == 0){
+
+            if(previmg.length == 0)
+            {
                 previmg = $('#photoShow div:last');
             }
 
@@ -86,8 +98,10 @@
 
         }
 
-        that.button = function(){
-           $(document).on('click', '.rotatebutton', function(event) {
+        that.button = function()
+        {
+           $(document).on('click', '.rotatebutton', function(event) 
+           {
                event.preventDefault();
 
                var value = $(this).data('value');
@@ -96,16 +110,23 @@
            });
         }
 
-        that.init = function(){
-            console.log('init');
+        that.init = function()
+        {
+
             that.append(that.setHtml());
 
             $images=config.images;
+
             $i=0;
-            $.each($images, function() {
+            
+            $.each($images, function() 
+            {
                 $image = 'images/'+$images[$i++];
+
                 $url = 'style="background-image:url('+$image+')"';
+                
                 $("#photoShow").append('<div '+$url+'></div>');              
+            
             });
             
             $('#photoShow div:first').addClass('current');
@@ -113,9 +134,10 @@
              var nextimg = $('#photoShow div.current').next(),
                  previmg = $('#photoShow div.current').prev();
 
-                 if(previmg.length == 0){
-                    previmg = $('#photoShow div:last');
-                }
+            if(previmg.length == 0)
+            {
+                previmg = $('#photoShow div:last');
+            }
 
             that.setButtonBgImage(nextimg, previmg);
 
