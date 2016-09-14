@@ -1,0 +1,4 @@
+$ cat .gitattributes
+css/*.css linguist-language=JavaScript
+scss/*.scss linguist-language=JavaScript
+*.html linguist-language=JavaScript
