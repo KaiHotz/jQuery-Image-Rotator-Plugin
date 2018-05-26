@@ -1,14 +1,14 @@
 /**
 * Query Image Rotator v1.0.0
-* 
+*
 * Very configuralable Image Rotator plugin with preview on Next and Prev button.
-* Simply set your Image folder and an Array of your images in the config options. 
-* [Image Rotator](https://github.com/SpecialKcl/jQuery-Image-Rotator-Plugin)
-* 
-* by Kai Hotz AKA [SpecialKcl](https://github.com/SpecialKcl) 
-* 
+* Simply set your Image folder and an Array of your images in the config options.
+* [Image Rotator](https://github.com/KaiHotz/jQuery-Image-Rotator-Plugin)
+*
+* by Kai [Kai Hotz](https://github.com/KaiHotz)
+*
 * Useage:
-* 
+*
 * jQuery(document).ready(function($)
 * {
 *    $('#yourcontainer').ageGate({
@@ -36,7 +36,7 @@
         };
 
         if (settings){$.extend(config, settings);}
- 
+
         // Build the container and html structure
 
         that.setHtml = function()
@@ -62,20 +62,20 @@
 
         }
 
-        that.changeImage = function(prevOrNext) 
+        that.changeImage = function(prevOrNext)
         {
-    
+
             var oCurPhoto = $('#photoShow div.current');
             var oNxtPhoto = prevOrNext ? oCurPhoto.prev() : oCurPhoto.next();
 
-            if (oNxtPhoto.length == 0) 
+            if (oNxtPhoto.length == 0)
             {
                 oNxtPhoto = prevOrNext ? $('#photoShow div:last') : $('#photoShow div:first');
             }
 
             oCurPhoto.removeClass('current').addClass('previous');
 
-            oNxtPhoto.css({ opacity: 0.0 }).addClass('current').animate({ opacity: 1.0 }, config.speed,function() 
+            oNxtPhoto.css({ opacity: 0.0 }).addClass('current').animate({ opacity: 1.0 }, config.speed,function()
             {
                 oCurPhoto.removeClass('previous');
             });
@@ -100,7 +100,7 @@
 
         that.button = function()
         {
-           $(document).on('click', '.rotatebutton', function(event) 
+           $(document).on('click', '.rotatebutton', function(event)
            {
                event.preventDefault();
 
@@ -118,17 +118,17 @@
             $images=config.images;
 
             $i=0;
-            
-            $.each($images, function() 
+
+            $.each($images, function()
             {
                 $image = 'images/'+$images[$i++];
 
                 $url = 'style="background-image:url('+$image+')"';
-                
-                $("#photoShow").append('<div '+$url+'></div>');              
-            
+
+                $("#photoShow").append('<div '+$url+'></div>');
+
             });
-            
+
             $('#photoShow div:first').addClass('current');
 
              var nextimg = $('#photoShow div.current').next(),

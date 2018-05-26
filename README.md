@@ -3,10 +3,10 @@
  Query Image Rotator v1.0.0
 
 Very configuralable Image Rotator plugin with preview on Next and Prev button.
-Simply set your Image folder and an Array of your images in the config options. 
-[Image Rotator](https://github.com/SpecialKcl/jQuery-Image-Rotator-Plugin)
+Simply set your Image folder and an Array of your images in the config options.
+[Image Rotator](https://github.com/KaiHotz/jQuery-Image-Rotator-Plugin)
 
-by Kai Hotz AKA [SpecialKcl](https://github.com/SpecialKcl) 
+by Kai Hotz [Kai Hotz](https://github.com/KaiHotz)
 
 ## How to Use:
 
