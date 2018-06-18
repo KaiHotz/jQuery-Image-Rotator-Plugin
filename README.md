@@ -33,7 +33,7 @@ Now call the Image Rotator initializer function on the desiered element and your
 ```javascript
 jQuery(document).ready(function($){
 
-   $('#yourcontainer').ageGate();
+   $('#yourcontainer').imageRotator();
 
 });
 ```
@@ -58,8 +58,8 @@ All of the options below are available to customize Image Rotator Plugin.
 Image Rotator Plugin default settings
 
 ```javascript
-$('#yourcontainer').ageGate({
-	'speed'       : 500,
+$('#yourcontainer').imageRotator({
+    'speed'      : 500,
     'imageFolder': 'images',
     'images'     : ['img1.jpg','img2.jpg','img3.jpg','img4.jpg'],
     'prevButton' : 'Previous',
