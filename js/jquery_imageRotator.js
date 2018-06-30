@@ -11,7 +11,7 @@
 *
 * jQuery(document).ready(function($)
 * {
-*    $('#yourcontainer').ageGate({
+*    $('#yourcontainer').imageRotator({
 *         'speed'       : 500,        //Speed of animation
 *         'imageFolder': 'images',    // Image Folder
 *         'images'     : ['img1.jpg','img2.jpg','img3.jpg','img4.jpg'], // Array of Images
@@ -100,7 +100,7 @@
       $i = 0
 
       $.each($images, function () {
-        $image = 'images/' + $images[$i++]
+        $image = 'images/' + $images[$i += 1]
 
         $url = 'style="background-image:url(' + $image + ')"'
 
