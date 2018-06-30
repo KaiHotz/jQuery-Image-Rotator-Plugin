@@ -21,133 +21,108 @@
 * });
 */
 
-(function($)
-{
-    $.fn.imageRotator = function(settings)
-    {
+(function ($) {
+  $.fn.imageRotator = function (settings) {
+    var that = this,
+      config = {
+        'speed': 500,
+        'imageFolder': 'images',
+        'images': ['img1.jpg', 'img2.jpg', 'img3.jpg', 'img4.jpg'],
+        'prevButton': 'Previous',
+        'nextButton': 'Next'
+      }
 
-        var that = this,
-            config = {
-            'speed'      : 500,
-            'imageFolder': 'images',
-            'images'     : ['img1.jpg','img2.jpg','img3.jpg','img4.jpg'],
-            'prevButton' : 'Previous',
-            'nextButton' : 'Next',
-        };
+    if (settings) { $.extend(config, settings) }
 
-        if (settings){$.extend(config, settings);}
+    // Build the container and html structure
 
-        // Build the container and html structure
+    that.setHtml = function () {
+      var structure = '<div id="photoShowSlider">'
+      structure += '<div id="photoShow"></div>'
+      structure += '<div id="photoShowButtons">'
+      structure += '<button id="prevbtn" class="rotatebutton" data-value="true">' + config.prevButton + '</button>'
+      structure += '<button id="nextbtn" class="rotatebutton" data-value="false">' + config.nextButton + '</button>'
+      structure += '</div></div>'
 
-        that.setHtml = function()
-        {
+      return structure
+    }
 
-            var structure   = '<div id="photoShowSlider">';
-                structure  += '<div id="photoShow"></div>';
-                structure  += '<div id="photoShowButtons">';
-                structure  += '<button id="prevbtn" class="rotatebutton" data-value="true">'+config.prevButton+'</button>';
-                structure  += '<button id="nextbtn" class="rotatebutton" data-value="false">'+config.nextButton+'</button>';
-                structure  += '</div></div>';
+    that.setButtonBgImage = function (nextimg, previmg) {
+      $('#nextbtn').css('background-image', nextimg.css('background-image'))
 
-            return structure;
+      $('#prevbtn').css('background-image', previmg.css('background-image'))
+    }
 
-        }
+    that.changeImage = function (prevOrNext) {
+      var oCurPhoto = $('#photoShow div.current')
+      var oNxtPhoto = prevOrNext ? oCurPhoto.prev() : oCurPhoto.next()
 
-        that.setButtonBgImage = function(nextimg, previmg)
-        {
+      if (oNxtPhoto.length === 0) {
+        oNxtPhoto = prevOrNext ? $('#photoShow div:last') : $('#photoShow div:first')
+      }
 
-            $("#nextbtn").css('background-image', nextimg.css('background-image'));
+      oCurPhoto.removeClass('current').addClass('previous')
 
-            $("#prevbtn").css('background-image', previmg.css('background-image'));
+      oNxtPhoto.css({ opacity: 0.0 }).addClass('current').animate({ opacity: 1.0 }, config.speed, function () {
+        oCurPhoto.removeClass('previous')
+      })
 
-        }
+      var nextimg = $('#photoShow div.current').next()
 
-        that.changeImage = function(prevOrNext)
-        {
+      if (nextimg.length === 0) {
+        nextimg = $('#photoShow div:first')
+      }
 
-            var oCurPhoto = $('#photoShow div.current');
-            var oNxtPhoto = prevOrNext ? oCurPhoto.prev() : oCurPhoto.next();
+      var previmg = $('#photoShow div.current').prev()
 
-            if (oNxtPhoto.length == 0)
-            {
-                oNxtPhoto = prevOrNext ? $('#photoShow div:last') : $('#photoShow div:first');
-            }
+      if (previmg.length === 0) {
+        previmg = $('#photoShow div:last')
+      }
 
-            oCurPhoto.removeClass('current').addClass('previous');
+      that.setButtonBgImage(nextimg, previmg)
+    }
 
-            oNxtPhoto.css({ opacity: 0.0 }).addClass('current').animate({ opacity: 1.0 }, config.speed,function()
-            {
-                oCurPhoto.removeClass('previous');
-            });
+    that.button = function () {
+      $(document).on('click', '.rotatebutton', function (event) {
+        event.preventDefault()
 
-            var nextimg = $('#photoShow div.current').next();
+        var value = $(this).data('value')
 
-            if(nextimg.length == 0)
-            {
-                nextimg = $('#photoShow div:first');
-            }
+        that.changeImage(value)
+      })
+    }
 
-            var previmg = $('#photoShow div.current').prev();
+    that.init = function () {
+      that.append(that.setHtml())
 
-            if(previmg.length == 0)
-            {
-                previmg = $('#photoShow div:last');
-            }
+      $images = config.images
 
-            that.setButtonBgImage(nextimg, previmg);
+      $i = 0
 
-        }
+      $.each($images, function () {
+        $image = 'images/' + $images[$i++]
 
-        that.button = function()
-        {
-           $(document).on('click', '.rotatebutton', function(event)
-           {
-               event.preventDefault();
+        $url = 'style="background-image:url(' + $image + ')"'
 
-               var value = $(this).data('value');
+        $('#photoShow').append('<div ' + $url + '></div>')
+      })
 
-               that.changeImage(value);
-           });
-        }
+      $('#photoShow div:first').addClass('current')
 
-        that.init = function()
-        {
+      var nextimg = $('#photoShow div.current').next(),
+        previmg = $('#photoShow div.current').prev()
 
-            that.append(that.setHtml());
+      if (previmg.length === 0) {
+        previmg = $('#photoShow div:last')
+      }
 
-            $images=config.images;
+      that.setButtonBgImage(nextimg, previmg)
 
-            $i=0;
+      that.button()
+    }
 
-            $.each($images, function()
-            {
-                $image = 'images/'+$images[$i++];
+    that.init()
 
-                $url = 'style="background-image:url('+$image+')"';
-
-                $("#photoShow").append('<div '+$url+'></div>');
-
-            });
-
-            $('#photoShow div:first').addClass('current');
-
-             var nextimg = $('#photoShow div.current').next(),
-                 previmg = $('#photoShow div.current').prev();
-
-            if(previmg.length == 0)
-            {
-                previmg = $('#photoShow div:last');
-            }
-
-            that.setButtonBgImage(nextimg, previmg);
-
-            that.button();
-        }
-
-        that.init();
-
-        return that;
-    };
-})(jQuery);
-
-
+    return that
+  }
+})(jQuery)
